@@ -8,7 +8,8 @@ const useStyles = createUseStyles({
       borderRadius: '5px',
       height: '2rem',
       width: '20rem',
-      textAlign: 'center'
+      textAlign: 'center',
+      marginBottom: '1rem'
     },
     container: {
       width: '100%',
@@ -16,6 +17,12 @@ const useStyles = createUseStyles({
       alignItems: 'center',
       margin: '1rem',
       flexDirection: 'column'
+    },
+    list: {
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'baseline',
+        margin: '1.5rem'
     }
   })
 export function InputPassword(status:any, setStatus: any) {
@@ -47,7 +54,7 @@ export function InputPassword(status:any, setStatus: any) {
                 name='repeatPassword'
             />
             {error.message.length && <p style={{ color: 'red' }}>{ error.message }</p>}
-            <ul>
+            <ul className={classes.list}>
                 <li style={{ color: !error.eigthCharacters ? 'red' : 'green' }}>Should be at least 8 characters long</li>
                 <li style={{ color: !error.oneNumber ? 'red' : 'green' }}>Should contains at least one number</li>
                 <li style={{ color: !error.twoNACharacters ? 'red' : 'green' }} >Should contains at least two non-alphanumeric characters</li>
