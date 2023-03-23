@@ -10,21 +10,25 @@ function App() {
 
   const handleSubmit = (event: any) => {
     event.preventDefault()
-    alert('Registro enviado')
+    if(status.name && status.email && status.password) {
+      alert('Form submitted successfully')
+    } else {
+      alert('Missing data in the form')
+    }
   }
 
-  const [status, SetStatus] = useState({
+  const [status, setStatus] = useState({
     name: false,
-    emai: false,
+    email: false,
     password: false,
   })
 
   return (
     <form className="App" onSubmit={handleSubmit}>
       <h2>Create an new account</h2>
-      <InputName />
-      <InputEmail />
-      <InputPassword />
+      <InputName status={status} fn={setStatus} />
+      <InputEmail status={status} fn={setStatus} />
+      <InputPassword status={status} fn={setStatus} />
       <button 
         type='submit' 
         style={{ color: 'black', 

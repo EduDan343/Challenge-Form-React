@@ -25,16 +25,18 @@ const useStyles = createUseStyles({
         margin: '1.5rem'
     }
   })
-export function InputPassword(status:any, setStatus: any) {
+export function InputPassword(props: any) {
 
     const classes = useStyles()
 
     const [password, error, handlePassword] = useValidPassword()
 
-    // useEffect(() => {
-    //     (error.message.length || password.newPassword.length == 0) ? setStatus({...status, password: false}) : setStatus({...status, password: true})
-    //   },[password, error])
+    useEffect(() => {
+        (error.message.length || password.newPassword.length == 0) ? props.fn({...props.status, password: false}) : props.fn({...props.status, password: true})
+      },[password, error])
+
     console.log('password :', password.newPassword)
+
     return(
         <div className={classes.container}>
             <input 

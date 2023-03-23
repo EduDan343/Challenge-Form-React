@@ -19,15 +19,15 @@ const useStyles = createUseStyles({
   }
 })
 
-export function InputEmail(status:any, setStatus: any): JSX.Element {
+export function InputEmail(props: any): JSX.Element {
 
     const classes = useStyles()
 
     const [email, error, handleEmail] = useValidEmail()
 
-    // useEffect(() => {
-    //     (error.length || email.length == 0) ? setStatus({...status, email: false}) : setStatus({...status, email: true})
-    //   },[email, error])
+    useEffect(() => {
+        (error.length || email.length == 0) ? props.fn({...props.status, email: false}) : props.fn({...props.status, email: true})
+      },[email, error])
 
     return(
         <div className={classes.container}>

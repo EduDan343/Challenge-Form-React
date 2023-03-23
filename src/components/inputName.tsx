@@ -19,15 +19,17 @@ const useStyles = createUseStyles({
   }
 })
 
-export function InputName(status:any, setStatus: Function): JSX.Element {
+export function InputName(props: any): JSX.Element {
 
   const classes = useStyles()
 
+    console.log('props', props)
+
     const [name, error, handleName] = useValidName()
 
-    // useEffect(() => {
-    //   (error.length || name.length == 0) ? setStatus({...status, name: false}) : setStatus({...status, name: true})
-    // },[name, error])
+    useEffect(() => {
+      (error.length || name.length == 0) ? props.fn({...props.status, name: false}) : props.fn({...props.status, name: true})
+    },[name, error])
 
     return(
       <div className={classes.container} >
