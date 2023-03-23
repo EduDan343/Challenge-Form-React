@@ -48,6 +48,8 @@ export function useValidPassword(): any {
         newPassword: '',
         repeatPassword: '',
       })
+
+      const [flag, setFlag] = useState(false)
   
       //Estado error
       const [error, setError] = useState<object>({
@@ -59,11 +61,12 @@ export function useValidPassword(): any {
       })
 
       useEffect(() => {
-        setError(validate(password))
+        flag && setError(validate(password))
       },[password])
   
       const handlePassword = (event: React.ChangeEvent<HTMLInputElement>):void => {
         event.preventDefault()
+        flag == false && setFlag(true)
         console.log(event.target.value)
         setPassword({
             ...password,

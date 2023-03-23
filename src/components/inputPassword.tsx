@@ -39,7 +39,7 @@ export function InputPassword(status:any, setStatus: any) {
         <div className={classes.container}>
             <input 
                 className={classes.inputPassword} 
-                style={{ border: '3px solid', borderColor: error.message.length ? 'red':'greenyellow'}} 
+                style={{ border: '3px solid', borderColor: !password.newPassword.length ? 'black' : error.message.length ? 'red':'greenyellow'}} 
                 type="password" 
                 placeholder='Your Password' 
                 onChange={handlePassword}
@@ -47,13 +47,13 @@ export function InputPassword(status:any, setStatus: any) {
             />
             <input 
                 className={classes.inputPassword} 
-                style={{ border: '3px solid', borderColor: error.message.length ? 'red':'greenyellow'}} 
+                style={{ border: '3px solid', borderColor: !password.newPassword.length ? 'black' : error.message.length ? 'red':'greenyellow'}} 
                 type="password" 
                 placeholder='Rewrite your password' 
                 onChange={handlePassword}
                 name='repeatPassword'
             />
-            {password.newPassword.length && error.message.length ? <p style={{ color: 'red' }}>{ error.message }</p> : <p></p>}
+            {error.message.length ? <p style={{ color: 'red' }}>{ error.message }</p> : null}
             <ul className={classes.list}>
                 <li style={{ color: !password.newPassword.length ? 'black' : !error.eigthCharacters ? 'red' : 'green' }}>Should be at least 8 characters long</li>
                 <li style={{ color: !password.newPassword.length ? 'black' : !error.oneNumber ? 'red' : 'green' }}>Should contains at least one number</li>
