@@ -29,7 +29,7 @@ export function useValidPassword(): any {
             error.oneNumber = true
         }
 
-        if(!/^(?=.*?[#?!@$%^&*-])/.test(password.newPassword)) {
+        if(!/^(?=.*?[\/#\(\?\)\!@\[\$\]\%\{\^\}\&\:\\;\\'\\,\\`\\~\\+\\=\\<\\>\\"\\.\*-])/.test(password.newPassword)) {
             error.twoNACharacters = false
         } else {
             error.twoNACharacters = true

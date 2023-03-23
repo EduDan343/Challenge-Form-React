@@ -34,7 +34,7 @@ export function InputPassword(status:any, setStatus: any) {
     // useEffect(() => {
     //     (error.message.length || password.newPassword.length == 0) ? setStatus({...status, password: false}) : setStatus({...status, password: true})
     //   },[password, error])
-
+    console.log('password :', password.newPassword)
     return(
         <div className={classes.container}>
             <input 
@@ -53,12 +53,12 @@ export function InputPassword(status:any, setStatus: any) {
                 onChange={handlePassword}
                 name='repeatPassword'
             />
-            {error.message.length && <p style={{ color: 'red' }}>{ error.message }</p>}
+            {password.newPassword.length && error.message.length ? <p style={{ color: 'red' }}>{ error.message }</p> : <p></p>}
             <ul className={classes.list}>
-                <li style={{ color: !error.eigthCharacters ? 'red' : 'green' }}>Should be at least 8 characters long</li>
-                <li style={{ color: !error.oneNumber ? 'red' : 'green' }}>Should contains at least one number</li>
-                <li style={{ color: !error.twoNACharacters ? 'red' : 'green' }} >Should contains at least two non-alphanumeric characters</li>
-                <li style={{ color: !error.oneUppercase ? 'red' : 'green' }} >Should contains at least one uppercase character</li>
+                <li style={{ color: !password.newPassword.length ? 'black' : !error.eigthCharacters ? 'red' : 'green' }}>Should be at least 8 characters long</li>
+                <li style={{ color: !password.newPassword.length ? 'black' : !error.oneNumber ? 'red' : 'green' }}>Should contains at least one number</li>
+                <li style={{ color: !password.newPassword.length ? 'black' : !error.twoNACharacters ? 'red' : 'green' }} >Should contains at least two non-alphanumeric characters</li>
+                <li style={{ color: !password.newPassword.length ? 'black' : !error.oneUppercase ? 'red' : 'green' }} >Should contains at least one uppercase character</li>
             </ul>
         </div>
     )
